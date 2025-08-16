@@ -6,6 +6,10 @@ let arr = Array.from(buttons);
 arr.forEach((button) => {
   button.addEventListener("click", (e) => {
     if (e.target.innerHTML == "=") {
+      // Handle percentage calculations properly
+      string = string.replace(/(\d+)%/g, "($1/100)*");
+      // Remove any trailing * that might have been added
+      string = string.replace(/\*$/, "");
       string = eval(string);
       input.value = string;
     } else if (e.target.innerHTML == "AC") {
@@ -20,3 +24,4 @@ arr.forEach((button) => {
     }
   });
 });
+
